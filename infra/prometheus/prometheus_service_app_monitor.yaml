@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: test-app-svc-monitor
+  labels:
+    app: test-app
+spec:
+  endpoints:
+  - interval: 10s
+    port: http
+    path: /app-metrics
+  selector:
+    matchLabels:
+      app: test-app

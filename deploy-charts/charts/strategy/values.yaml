@@ -1,0 +1,8 @@
+canary:
+  steps:
+    - setWeight: 25
+    - pause: {}
+    - setWeight: 50
+    - pause: {}
+    - setWeight: 75
+    - pause: {}  

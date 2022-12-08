@@ -1,0 +1,13 @@
+defaultClusterName: kind
+clusterName: test-cluster
+
+prometheusNamespace: default
+grafanaNamespace: default
+
+deployemntReleaseName:
+  test-app-release
+
+deployment:
+  app: 
+    name: test-app
+    tag: 1.0.7

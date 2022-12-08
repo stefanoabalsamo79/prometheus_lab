@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.app.name }}-rollout
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  workloadRef: 
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.app.name }}-deployment
+  strategy:
+    canary:
+      dynamicStableScale: true
+      canaryService: {{ .Values.app.name }}-canary-service
+      stableService: {{ .Values.app.name }}-service
+      trafficRouting:
+        nginx:
+          stableIngress: {{ .Values.app.name }}-ingress
+          additionalIngressAnnotations:
+            canary-weight: "30"
+      steps:
+      {{- range .Values.canary.steps }}
+        - {{ . | toYaml }}
+      {{- end }}

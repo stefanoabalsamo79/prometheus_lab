@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}-deployment
+  annotations:
+    version: 1.0.0
+spec:
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  replicas: {{ .Values.deployment.replicas }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: {{ .Values.app.name }}
+          image: {{ include "imageName" (dict "values" .Values) }} 
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: TEST_VAR
+            value: 1.0.4
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+            name: http
+          resources:
+            limits:
+              cpu: 300m
+              memory: 1G
+            requests:
+              cpu: 200m
+              memory: 500M

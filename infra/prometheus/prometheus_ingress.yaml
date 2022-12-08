@@ -1,0 +1,101 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-operated-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/metrics"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/alerts"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/graph"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/config"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/flags"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/status"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/rules"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/targets"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090
+      - pathType: Prefix
+        path: "/service-discovery"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090    
+      - pathType: Prefix
+        path: "/static"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090    
+      - pathType: Prefix
+        path: "/query"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090    
+      - pathType: Prefix
+        path: "/api"
+        backend:
+          service:
+            name: prometheus-operated
+            port:
+              number: 9090    
+              
+              
