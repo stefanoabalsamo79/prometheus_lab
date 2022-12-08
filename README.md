@@ -410,7 +410,7 @@ watch -n 0.1 curl http://localhost/app
 ```
 
 ### Let's portforward grafana so we can access to its UI
-[`image_001`](./images_and_diagrams/image_001.png)
+![`image_001`](./images_and_diagrams/image_001.png)
 
 ---
 ***Notes:*** \
