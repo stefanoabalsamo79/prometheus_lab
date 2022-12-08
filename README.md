@@ -414,7 +414,7 @@ watch -n 0.1 curl http://localhost/app
 
 ---
 ***Notes:*** \
-Default credentials: admin / admin \
+Default credentials: **admin** / **admin** \
 You will be asked to change pwd after the first access
 
 ---
